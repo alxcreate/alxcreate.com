@@ -23,6 +23,11 @@ section {
     align-items: center;
 }
 
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .avatar-container {
     text-align: center;
     vertical-align: middle;
