@@ -1,5 +1,7 @@
 # Starlight Starter Kit: Basics
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e0ef7f2b-71a8-465c-bd45-d9c85b283fb3/deploy-status)](https://app.netlify.com/sites/alxcreate/deploys)
+
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
 ```
