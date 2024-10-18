@@ -48,7 +48,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/alxcreate/doc/tree/main/',
+            'https://github.com/alxcreate/alxcreate.com/tree/main/',
         },
         blog: {
           routeBasePath: 'blog',
@@ -62,7 +62,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/alxcreate/doc/tree/main/',
+            'https://github.com/alxcreate/alxcreate.com/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -79,21 +79,21 @@ const config: Config = {
     ],
   ],
 
-  // themes: [
-  //   '@docusaurus/theme-live-codeblock',
-  //   [
-  //     // @ts-ignore
-  //     "@easyops-cn/docusaurus-search-local",
-  //     /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-  //     // @ts-ignore
-  //     ({
-  //       hashed: true,
-  //       language: ["ru", "en"],
-  //       highlightSearchTermsOnTargetPage: true,
-  //       explicitSearchResultPath: true,
-  //     }),
-  //   ],
-  // ],
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    [
+      // @ts-ignore
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      // @ts-ignore
+      ({
+        hashed: true,
+        language: ["ru", "en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      }),
+    ],
+  ],
 
   themeConfig: {
     metadata: [
