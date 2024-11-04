@@ -1,5 +1,5 @@
 ---
-title: Update from Source
+title: Update Zabbix from Source
 ---
 
 1. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix7.0.5`
