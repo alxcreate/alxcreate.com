@@ -27,17 +27,17 @@ export default function Home(): JSX.Element {
           <div className="profile-contacts-container">
             <div className="profile-contact-item">
               <a href="mailto:alx@alxcreate.com">
-                <FontAwesomeIcon icon={['fas', 'envelope']} /> alx@alxcreate.com
+                alx@alxcreate.com
               </a>
             </div>
             <div className="profile-contact-item">
               <a href="https://www.linkedin.com/in/alxcreate" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={['fab', 'linkedin']} /> LinkedIn
+                LinkedIn
               </a>
             </div>
             <div className="profile-contact-item">
               <a href="https://t.me/alxcreate1" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={['fab', 'telegram']} /> Telegram
+                Telegram
               </a>
             </div>
           </div>
