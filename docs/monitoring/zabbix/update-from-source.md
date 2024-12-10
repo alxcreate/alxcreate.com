@@ -2,23 +2,23 @@
 title: Update Zabbix from Source
 ---
 
-1. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix7.0.5`
+1. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix7.2.0`
 
     ```bash
-    wget https://cdn.zabbix.com/zabbix/sources/stable/7.0/zabbix-7.0.5.tar.gz -P /home/zabbix7.0.5
+    wget https://cdn.zabbix.com/zabbix/sources/stable/7.0/zabbix-7.2.0.tar.gz -P /home/zabbix7.2.0
     ```
 
 2. Extract source
 
     ```bash
-    cd /home/zabbix7.0.5
-    tar -zxvf zabbix-7.0.5.tar.gz
+    cd /home/zabbix7.2.0
+    tar -zxvf zabbix-7.2.0.tar.gz
     ```
 
 3. Execute `configure` with necessary options
 
     ```bash
-    cd /home/zabbix7.0.5/zabbix-7.0.5
+    cd /home/zabbix7.2.0/zabbix-7.2.0
     ./configure --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi
     ```
 
@@ -42,7 +42,7 @@ title: Update Zabbix from Source
 
     ```bash
     cp -rf /var/www/html/zabbix /var/www/html/_zabbix
-    cp -rf /home/zabbix7.0.5/zabbix-7.0.5/ui/* /var/www/html/zabbix/
+    cp -rf /home/zabbix7.2.0/zabbix-7.2.0/ui/* /var/www/html/zabbix/
     rm -rf /var/www/html/_zabbix
     ```
 
