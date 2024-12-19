@@ -9,9 +9,9 @@
 
 @use './components/admonition';
 @use './components/back-to-top-button';
-@use './components/code';
+// @use './components/code';
 @use './components/doc-item';
-@use './components/doc-root';
+// @use './components/doc-root';
 @use './components/doc-sidebar';
 @use './components/edit-this-page';
 @use './components/markdown';
@@ -19,10 +19,10 @@
 @use './components/navbar-sidebar';
 // @use './components/pagination';
 @use './components/search';
-@use './components/table';
-@use './components/tabs';
-@use './components/theme-toggle';
-@use './components/toc';
+// @use './components/table';
+// @use './components/tabs';
+// @use './components/theme-toggle';
+// @use './components/toc';
 
 .pagination-nav {
   display: none;
@@ -48,8 +48,8 @@
 }
 
 html[data-theme='light'] {
-  --token-primary-bg-c: #f8f4ec;
-  --token-secondary-bg-c: #f8f4ec;
+  --token-primary-bg-c: #fff;
+  --token-secondary-bg-c: #fff;
 
   --ifm-link-color: rgb(47, 95, 178);
   //rgb value is c-blue-90
@@ -57,19 +57,19 @@ html[data-theme='light'] {
 
   --ifm-background-surface-color: rgb(28, 96, 212);
 
-  --ifm-navbar-background-color: #f8f4ec;
+  --ifm-navbar-background-color: #fff;
   --ifm-navbar-shadow: 0 0px 0 0 rgb(28, 96, 212);
 
-  --ifm-heading-color: rgb(0, 0, 0);
-  --ifm-secondary-heading-color: rgb(0, 0, 0);
+  --ifm-heading-color: #010F1A;
+  --ifm-secondary-heading-color: #010F1A;
 
-  --ifm-code-background: rgb(28, 96, 212);
-  --ifm-font-color-base: rgb(0, 0, 0);
+  --ifm-code-background: #f7f7f7;
+  --ifm-font-color-base: #010F1A;
 }
 
 html[data-theme='dark'] {
-  --token-primary-bg-c: #373737;
-  --token-secondary-bg-c: #373737;
+  --token-primary-bg-c: #010F1A;
+  --token-secondary-bg-c: #010F1A;
 
   --ifm-link-color: rgb(79, 143, 255);
   //rgb value is c-blue-70
@@ -77,15 +77,15 @@ html[data-theme='dark'] {
 
   --ifm-background-surface-color: #373737;
 
-  --ifm-navbar-background-color: rgb(55, 55, 55);
-  --ifm-navbar-shadow: 0 0px 0 0 rgb(55, 55, 55);
+  --ifm-navbar-background-color: #010F1A;
+  --ifm-navbar-shadow: 0 0px 0 0 #010F1A;
 
   --ifm-heading-color: rgb(255, 255, 255);
   --ifm-secondary-heading-color: rgb(255, 255, 255);
 
   --ifm-font-color-base: rgb(255, 255, 255);
-  --ifm-background-color: rgb(55, 55, 55);
-  --ifm-dropdown-background-color: rgb(55, 55, 55);
+  --ifm-background-color: #010F1A;
+  --ifm-dropdown-background-color: #010F1A;
 
   --ifm-menu-link-sublist-icon-filter: invert(100%);
 }

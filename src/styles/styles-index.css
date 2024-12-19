@@ -1,11 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap');
-
 body {
-    font-family: "Source Sans Pro", Arial, sans-serif;
-    background-color: #f8f4ec;
-    margin: 0;
-    padding: 0;
-    font-weight: 400; /* Slightly bolder than normal */
+    /* font-family: Tahoma, sans-serif; */
 }
 
 .home-page {
@@ -18,57 +12,45 @@ body {
 }
 
 .profile-section {
-    max-width: 600px;
+    font-family: Georgia, sans-serif;
+    max-width: 500px;
     width: 100%;
-    background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.6);
     text-align: center;
     display: flex;
     align-items: center;
 }
 
-.profile-avatar-container {
-    text-align: center;
-    vertical-align: middle;
-    margin-right: 20px;
-}
-
-.profile-avatar {
-    height: 128px;
-    width: 128px;
-    border-radius: 50%;
-    vertical-align: middle;
-}
-
 .contact-info {
-    text-align: left;
+    text-align: right;
+    font-size: 50px;
 }
 
 .profile-info p {
-    text-align: left;
+    font-size: 1.3em;
+    text-align: right;
     margin: 0;
-    line-height: 1.6;
 }
 
 .profile-info p:first-child {
-    font-size: 1.5em;
-    font-weight: 400; /* Make the name bolder */
+    font-size: 2.0em;
+    font-weight: 400;
 }
 
-.profile-vertical-line {
-    border-left: 1px solid #ccc;
-    height: 100px;
-    margin: 0 20px;
+[data-theme='light']{
+    .profile-vertical-line {
+        border-left: 1px solid #000;
+        height: 100px;
+        margin: 0 20px;
+    }
 }
 
-.profile-horizontal-line {
-    display: none;
-    width: 100%;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 10px 20px;
+[data-theme='dark']{
+    .profile-vertical-line {
+        border-left: 1px solid #fff;
+        height: 100px;
+        margin: 0 20px;
+    }
 }
 
 .profile-contacts-container {
@@ -83,37 +65,53 @@ body {
     margin: 5px;
 }
 
-.profile-contact-item a {
-    color: #555;
-    text-decoration: none;
+.profile-contact-item a[data-theme='light'] {
+    font-color: #000;
+    text-decoration: underline;
     padding: 5px 10px;
-    font-weight: 400; /* Slightly bolder than normal */
 }
 
-.profile-contact-item a:hover {
-    color: #000;
+.profile-contact-item a[data-theme='dark'] {
+    font-color: #fff;
+    text-decoration: underline;
+    padding: 5px 10px;
 }
 
 .profile-contact-item svg {
     margin-right: 5px;
 }
 
+.profile-horizontal-line {
+    display: none;
+}
+
 @media (max-width: 995px) {
     .profile-section {
-        max-width: 230px;
+        max-width: 300px;
         flex-direction: column;
-    }
-
-    .profile-avatar-container {
-        margin-right: 0;
-        margin-bottom: 10px;
     }
 
     .profile-vertical-line {
         display: none;
     }
 
-    .profile-horizontal-line {
-        display: block;
+    [data-theme='light']{
+        .profile-horizontal-line {
+            display: block;
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #000;
+            margin: 10px 20px;
+        }
+    }
+
+    [data-theme='dark']{
+        .profile-horizontal-line {
+            display: block;
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #fff;
+            margin: 10px 20px;
+        }
     }
 }

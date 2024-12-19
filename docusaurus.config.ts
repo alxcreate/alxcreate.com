@@ -11,7 +11,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://alxcreate.github.io',
+  url: 'https://alxcreate.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -103,7 +103,7 @@ const config: Config = {
     ],
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: true,
+      disableSwitch: false,
       respectPrefersColorScheme: false
     },
     navbar: {
@@ -122,15 +122,15 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/alxcreate/alxcreate.github.io',
+          href: 'https://github.com/alxcreate/alxcreate.com',
           label: 'GitHub',
           position: 'right',
         },
       ],
     },
     prism: {
-      theme: prismThemes.nightOwl,
-      // darkTheme: prismThemes.oneDark,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: [
         'java',
         'json',
