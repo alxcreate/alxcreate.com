@@ -1,6 +1,4 @@
----
-title: Vagrantfile
----
+# Vagrantfile
 
 This is a template for creating a Vagrantfile for creating multiple VMs.
 
@@ -11,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :libvirt do |libvirt|
     libvirt.driver = "kvm"
   end
-  
+
   (1..3).each do |i|
     config.vm.define "server#{i}" do |node|
       node.vm.box = "generic/alpine38"
@@ -19,15 +17,15 @@ Vagrant.configure("2") do |config|
         libvirt.memory = 1024
         libvirt.cpus = 1
       end
-      
+
       node.vm.network :private_network, ip: "192.168.33.#{i}"
-      
-      node.ssh.insert_key = true  # Включение импорта ключа SSH
+
+      node.ssh.insert_key = true
       config.vm.provision "shell", inline: <<-SHELL
         cat /home/<username>/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
-      SHELL            
+      SHELL
       node.vm.provision "shell", inline: <<-SHELL
-        # Дополнительные команды настройки, если требуется
+        # Additional commands
       SHELL
     end
   end
@@ -38,7 +36,6 @@ end
 
 ```ruby title="Vagrantfile"
 Vagrant.configure("2") do |config|
-  # Определение мастер-ноды
   config.vm.define "master" do |node|
     node.vm.box = "ubuntu/focal64"
     node.vm.provider :virtualbox do |vb|
@@ -51,7 +48,6 @@ Vagrant.configure("2") do |config|
     node.ssh.private_key_path = "id_rsa"
   end
 
-  # Определение worker-нод
   (1..4).each do |i|
     config.vm.define "worker#{i}" do |node|
       node.vm.box = "ubuntu/focal64"

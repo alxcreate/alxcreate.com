@@ -1,6 +1,4 @@
----
-title: Naming Convention
----
+# Naming Convention
 
 ## File and Folder Naming
 
@@ -87,15 +85,15 @@ title: Naming Convention
 
 Удалите пробелы и нижние подчеркивания в значениях Manufacturer и Product. Эти символы используются как разделители.
 
-* Manufacturer - Производитель. Не используйте разное написание одного производителя. Если не указан или Opensource, то используется “Others”.
-* Product - Имя продукта (Office, Photoshop и т.д.). Маркетинговый номер версии "2019" или "X" пишется слитно.
-* Version - Номер версии продукта в формате 0.0.0.0, 0.0.0 или 0.0. Не используйте маркетинговый номер версии "2019" или "X" и т.п.
-* P or V - Физические и виртуальные пакеты (APP-V) Указывается тип в типах развертывания.
-* Language - Язык из двух символов: RU, EN, DE, FR и т.д. Мультиязычные - ML.
-* Architecture - Архитектура (arm64/x64/x86/x99).
-* Configuration - Описание конфигурации используется при необходимости.
-* OS - ОС (Windows7, Windows11 и т.д.).
-* Edition - Редакция ОС (Home, Pro, Ent, Edu, Mlt)
+- Manufacturer - Производитель. Не используйте разное написание одного производителя. Если не указан или Opensource, то используется “Others”.
+- Product - Имя продукта (Office, Photoshop и т.д.). Маркетинговый номер версии "2019" или "X" пишется слитно.
+- Version - Номер версии продукта в формате 0.0.0.0, 0.0.0 или 0.0. Не используйте маркетинговый номер версии "2019" или "X" и т.п.
+- P or V - Физические и виртуальные пакеты (APP-V) Указывается тип в типах развертывания.
+- Language - Язык из двух символов: RU, EN, DE, FR и т.д. Мультиязычные - ML.
+- Architecture - Архитектура (arm64/x64/x86/x99).
+- Configuration - Описание конфигурации используется при необходимости.
+- OS - ОС (Windows7, Windows11 и т.д.).
+- Edition - Редакция ОС (Home, Pro, Ent, Edu, Mlt)
 
 ### Collection Naming
 
@@ -121,9 +119,9 @@ title: Naming Convention
         🧑🏼‍💻 USM <Name>
 ```
 
-* Prefix - Функциональное назначение
-* LIFECYCLESTATE - Pilot, TST, INT и т.д.
-* ProfileName - HR, Marketing и т.д.
+- Prefix - Функциональное назначение
+- LIFECYCLESTATE - Pilot, TST, INT и т.д.
+- ProfileName - HR, Marketing и т.д.
 
 ```
 🖥 Device Collections
@@ -159,11 +157,11 @@ title: Naming Convention
     📁 Maintenance Windows
         🖥 MW <Name>
     📁 Operating System Deployment
-        🖥 OSD <TSName>( Последовательности задач установки ОС) 
-        🖥 OSU <TSName> (Последовательности задач обновления ОС) 
+        🖥 OSD <TSName>( Последовательности задач установки ОС)
+        🖥 OSU <TSName> (Последовательности задач обновления ОС)
     📁 Operating System Imaging
         🖥 OSI <TSName> (Создание образов операционных систем (файл .wim))
 ```
 
-* Type - SRV (сервер) или CLN (клиент)
-* TSName - Соответствует имени последовательности задач.
+- Type - SRV (сервер) или CLN (клиент)
+- TSName - Соответствует имени последовательности задач.

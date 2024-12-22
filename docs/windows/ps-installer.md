@@ -1,6 +1,4 @@
----
-title: Powershell Installer
----
+# Powershell Installer
 
 ## Install
 

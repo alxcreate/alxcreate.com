@@ -1,6 +1,4 @@
----
-title: Problems
----
+# Problems
 
 ## Docker Desktop Kubernetes stuck on Starting
 

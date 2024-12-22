@@ -1,6 +1,4 @@
----
-title: Embedding Grafana
----
+# Embedding Grafana
 
 For embedding Grafana in your application, you need to enable anonymous access and set the role to Viewer.
 

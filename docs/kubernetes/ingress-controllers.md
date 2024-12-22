@@ -1,6 +1,4 @@
----
-title: Ingress controllers
----
+# Ingress controllers
 
 - nginx
 - haproxy

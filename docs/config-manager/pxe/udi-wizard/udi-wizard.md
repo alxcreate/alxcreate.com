@@ -1,13 +1,10 @@
----
-title: UDI Wizard
----
-
+# UDI Wizard
 
 ## Application Discovery Error
 
 Edit via UDI Wizard **Read Configuration File** in Application Discovery check `%OSDDataSourceDrive%\%OSDDataSourceDirectory%\AppDiscoveryresult.xml.app` to `%DeployRoot%\Scripts\UDIWizard_Config.xml.app`
 
-![alt text](udi-wizard/udi_01.png)
+![alt text](img/udi_01.png)
 
 ## Wizard
 
@@ -44,7 +41,7 @@ For specifying multiple OS in `xml`, several OSDImageName (variable) with names 
 
 OS images must be added to the display list in UDI Wizard. `VolumePage - Image Combo Box`
 
-* **Image Name** must match the **OSDImageName** variable set in the Task Sequence at the **Install** stage for each image. In each step of the image installation in the Task Sequence, a variable check is implemented. Thus, the selected image will be installed.
+- **Image Name** must match the **OSDImageName** variable set in the Task Sequence at the **Install** stage for each image. In each step of the image installation in the Task Sequence, a variable check is implemented. Thus, the selected image will be installed.
 
 **Index** - the number of the version in the image (Home, Edu, Pro etc.)
 

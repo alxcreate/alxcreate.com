@@ -1,6 +1,4 @@
----
-title: Nginx Single Error Page
----
+# Nginx Single Error Page
 
 In this note, we will see how to configure Nginx to serve a single error page for all error codes.
 
@@ -71,7 +69,7 @@ http {
 
 ```html title="/var/www/default/error.html"
 <html><body>
-<h1><!--# echo var="status" default="" --> 
+<h1><!--# echo var="status" default="" -->
 <!--# echo var="status_text" default="Something went wrong" --></h1>
 </body></html>
 ```

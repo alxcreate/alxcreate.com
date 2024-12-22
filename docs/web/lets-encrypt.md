@@ -1,18 +1,16 @@
----
-title: Let's Encrypt
----
+# Let's Encrypt
 
 Install certbot
 
 ```bash
-sudo apt update
-sudo apt install certbot python3-certbot-nginx
+apt update
+apt install certbot python3-certbot-nginx
 ```
 
 Edit nginx config file
 
 ```bash
-sudo nano /etc/nginx/sites-available/default
+nano /etc/nginx/sites-available/default
 ```
 
 Add domain names
@@ -24,19 +22,19 @@ server_name example.com <www.example.com>;
 Check config files
 
 ```bash
-sudo nginx -t
+nginx -t
 ```
 
 Reload nginx
 
 ```bash
-sudo systemctl reload nginx
+systemctl reload nginx
 ```
 
 Create new cert
 
 ```bash
-sudo certbot --nginx -d example.com -d <www.example.com> --non-interactive --agree-tos -m <admin@example.com>
+certbot --nginx -d example.com -d <www.example.com> --non-interactive --agree-tos -m <admin@example.com>
 ```
 
 Check timer
@@ -48,7 +46,7 @@ systemctl status certbot.timer
 Check work
 
 ```bash
-sudo certbot renew --dry-run
+certbot renew --dry-run
 ```
 
 For CentOS add to cron

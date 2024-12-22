@@ -1,6 +1,4 @@
----
-title: Autocompletion CLI
----
+# Autocompletion CLI
 
 ```bash title="~/.zshrc"
 autoload -Uz compinit && compinit

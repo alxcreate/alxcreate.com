@@ -1,6 +1,4 @@
----
-title: Zabbix Template CUCM Resources Monitoring
----
+# Zabbix Template CUCM Resources Monitoring
 
 ## CUCM Settings
 
@@ -181,7 +179,7 @@ This template monitors the resources of each node of the CUCM cluster through AX
                     <preprocessing>
                         <step>
                             <type>21</type>
-                            <params>value = String(value) 
+                            <params>value = String(value)
 value = value.replace(/&gt;&lt;/g,&quot;&gt;\n&lt;&quot;);
 return value</params>
                             <error_handler>0</error_handler>

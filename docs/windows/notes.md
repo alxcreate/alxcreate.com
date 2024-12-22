@@ -1,6 +1,16 @@
----
-title: Scripts
----
+# Notes
+
+## Bypass Windows 11 requirements during installation
+
+At the beginning of the Windows 11 installation, press **Shift+F10** and enter `regedit` in **cmd**. Go to the `HKEY_LOCAL_MACHINE\SYSTEM\Setup` branch. Create **LabConfig** directory and **DWORD** keys inside:
+
+- `BypassTPMCheck` = 1
+- `BypassRAMCheck` = 1
+- `BypassSecureBootCheck` = 1
+
+## Bypass Windows 11 network requirement during installation
+
+At the beginning of the Windows 11 installation, press **Shift+F10** and enter `OOBE\BYPASSNRO` in **cmd**. It will reboot and you can continue the installation without the Internet.
 
 ## Run as user
 
@@ -144,7 +154,7 @@ Get-ChildItem -Path $path -Recurse -Force | Where-Object { $_.PSIsContainer -and
 
 ```powershell title="powershell"
 Add-Type -AssemblyName System.Windows.Forms
-$ip=get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1} 
+$ip=get-WmiObject Win32_NetworkAdapterConfiguration|Where {$_.Ipaddress.length -gt 1}
 $ipaddress = $ip.ipaddress[0]
 $pcname = [System.Net.Dns]::GetHostName()
 [System.Windows.Forms.MessageBox]::Show("Имя компьютера: $pcname `n`nIP адрес: $ipaddress",'Имя компьютера','OK','Information')

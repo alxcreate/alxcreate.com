@@ -1,6 +1,4 @@
----
-title: MetalLB
----
+# MetalLB
 
 [MetalLB](https://metallb.universe.tf/)
 

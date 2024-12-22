@@ -1,6 +1,4 @@
----
-title: Yandex Cloud Template
----
+# Yandex Cloud Template
 
 This is a template for creating an instance in Yandex Cloud.
 

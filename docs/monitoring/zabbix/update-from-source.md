@@ -1,6 +1,4 @@
----
-title: Update Zabbix from Source
----
+# Update Zabbix from Source
 
 1. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix7.2.0`
 

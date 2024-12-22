@@ -1,6 +1,4 @@
----
-title: Install
----
+# Install
 
 ## Hard way
 

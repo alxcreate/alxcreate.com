@@ -1,6 +1,4 @@
----
-title: Services
----
+# Services
 
 1. Prometheus
 2. Grafana

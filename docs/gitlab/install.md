@@ -1,6 +1,4 @@
----
-title: Install
----
+# Install
 
 ## Registry access
 
@@ -30,7 +28,7 @@ services:
       - '2224:22'
     networks:
       - web-gitlab
-    
+
   runner:
     image: 'gitlab/gitlab-runner:latest'
     restart: always

@@ -1,20 +1,12 @@
----
-title: Nginx SSL сертификат
----
+# Nginx SSL сертификат
 
-Создаем приватный ключ
+Create private key:
 
 ```bash
 openssl genrsa -out servername.key 2048
 ```
 
-Создаем файл запроса ключа
-
-```bash
-nano servername-key.conf
-```
-
-C содержимым
+Create configuration file with following content:
 
 ```conf title="servername-key.conf"
 [req]
@@ -40,56 +32,54 @@ subjectAltName = @alter_name
 DNS.1 = servername.domain.com
 ```
 
-Создаем запрос на сертификат
+Create a certificate signing request (CSR) using private key and configuration file:
 
 ```bash
 openssl req -new -key servername.key -out servername.csr -config servername-key.conf
-
 cat servername.csr
 ```
 
-Используем `servername.csr` для **Microsoft Active Directory Certificate Services**
+Use `servername.csr` for **Microsoft Active Directory Certificate Services**
 
-Если **Microsoft Active Directory Certificate Services** не принимает, то конвертировать в **base64**
+Use folowing command to convert certificate to **base64** format:
 
 ```bash
 openssl base64 -in servername.csr -out servername_base64.csr
-
 cat servername_base64.csr
 ```
 
-Конвертируем полученный файл для веб сервера
+Convert certificate:
 
 ```bash
 openssl x509 -inform DER -in servername.cer -out servername.crt
 ```
 
-Меняем права доступа
+Set permissions for key and certificate files:
 
 ```bash
 chmod 400 servername.key
 chmod 400 servername.crt
 ```
 
-Конвертируем сертификат в формат **PEM**
+Convert certificate to **PEM** format:
 
 ```bash
 openssl x509 -inform der -in ca.cer -out ca.pem
 ```
 
-Копируем сертификат в директорию
+Copy certificate to **/usr/local/share/ca-certificates**:
 
 ```bash
 cp ./certs/ca.pem /usr/local/share/ca-certificates/ca.crt
 ```
 
-Обновляем сертификаты
+Update certificates:
 
 ```bash
 update-ca-certificates
 ```
 
-Добавляем сертификат в Nginx
+Add certificate to Nginx configuration:
 
 ```bash
 nano /etc/nginx/sites-available/default
@@ -107,7 +97,7 @@ server {
 }
 ```
 
-Перезапускаем Nginx
+Restart Nginx
 
 ```bash
 sudo systemctl restart nginx

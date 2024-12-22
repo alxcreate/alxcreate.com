@@ -1,6 +1,4 @@
----
-title: ClickOnce
----
+# ClickOnce
 
 ## Silent Install
 

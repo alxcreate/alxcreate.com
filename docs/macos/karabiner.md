@@ -1,6 +1,4 @@
----
-title: Karabiner
----
+# Karabiner
 
 Fast change language without switch popup? Install [Karabiner-Elements](https://karabiner-elements.pqrs.org/). Edit config file:
 

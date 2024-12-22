@@ -1,6 +1,4 @@
----
-title: Nginx Kerberos Auth
----
+# Nginx Kerberos Auth
 
 Set hostname on web server
 

@@ -1,72 +1,70 @@
----
-title: Dockerfile
----
+# Dockerfile
 
 [Как устроен Dockerfile](https://doka.guide/tools/dockerfile/))
 
 ```docker title="Dockerfile"
-# Всегда импорт базового образа 
-FROM ubuntu:18.04 
-#FROM node 
-# Запуск любых команд терминала при сборке 
-RUN sudo apt update && sudo apt install nodejs && sudo apt install npm 
-# Указание рабочей папки для указания явного места выполнения команд внутри Dockerfile 
-WORKDIR /app 
-# Перенос всего содержимого папки, где лежит Dockerfile в папку /app в образ 
-COPY . /app 
-# ADD может скачать файл или разархивировать архив 
-# Задание переменных окружения 
-ENV NODE_ENV=production 
-# ARG можно указать при сборке (docker build --build-arg user=node_user). Останутся в истории, не для секретых (docker history) 
-# Для безопасной передачи секретных данных лучше использовать тома Docker 
-# Значение по умолчанию 'deploy' (можно не указывать) 
-ARG user=deploy 
-# Запуск от имени системы или другого пользователя (указан в ARG) 
-USER $user 
-# Проброс порта из контейнера 
-EXPOSE 8080 
-# В конце запуск приложения ENTRYPOINT/CMD 
-ENTRYPOINT ["node", "/app/app.js"] 
-# CMD ["node", "/app/app.js"] 
-# CMD можно переопределить при запуске контейнера 
+# Всегда импорт базового образа
+FROM ubuntu:18.04
+#FROM node
+# Запуск любых команд терминала при сборке
+RUN sudo apt update && sudo apt install nodejs && sudo apt install npm
+# Указание рабочей папки для указания явного места выполнения команд внутри Dockerfile
+WORKDIR /app
+# Перенос всего содержимого папки, где лежит Dockerfile в папку /app в образ
+COPY . /app
+# ADD может скачать файл или разархивировать архив
+# Задание переменных окружения
+ENV NODE_ENV=production
+# ARG можно указать при сборке (docker build --build-arg user=node_user). Останутся в истории, не для секретых (docker history)
+# Для безопасной передачи секретных данных лучше использовать тома Docker
+# Значение по умолчанию 'deploy' (можно не указывать)
+ARG user=deploy
+# Запуск от имени системы или другого пользователя (указан в ARG)
+USER $user
+# Проброс порта из контейнера
+EXPOSE 8080
+# В конце запуск приложения ENTRYPOINT/CMD
+ENTRYPOINT ["node", "/app/app.js"]
+# CMD ["node", "/app/app.js"]
+# CMD можно переопределить при запуске контейнера
 ```
 
 ## Многоступенчатая сборка
 
 ```docker title="Dockerfile"
-# Сборка проекта на платформе Node.js 
-FROM node:lts-alpine as build-stage 
-WORKDIR /app 
-COPY package*.json ./ 
-RUN npm install 
-COPY . . 
-RUN npm run build 
-# Запуск приложения на сервере 
-FROM nginx:stable-alpine as production-stage 
-COPY --from=build-stage /app/dist /usr/share/nginx/html 
-EXPOSE 80 
-CMD ["nginx", "-g", "daemon off;"] 
+# Сборка проекта на платформе Node.js
+FROM node:lts-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+# Запуск приложения на сервере
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ## Исключение файлов из сборки .dockerignore
 
 ```
-# Файлы или папки, имена которых начинаются на temp, и которые находятся в любой папке первого уровня 
-*/temp* 
-# Для папок второго уровня 
-*/*/temp* 
-# Файлы и папки из корневой папки образа, имена которых начинаются на temp и состоят из пяти символов, последний из которых может быть любым 
+# Файлы или папки, имена которых начинаются на temp, и которые находятся в любой папке первого уровня
+*/temp*
+# Для папок второго уровня
+*/*/temp*
+# Файлы и папки из корневой папки образа, имена которых начинаются на temp и состоят из пяти символов, последний из которых может быть любым
 temp?
 ```
 
 ```bash
-# Сборка образа в текущей папке 
-docker build . 
-# Указание файла 
-docker build -f containers/dockerfile-mode-1 . 
-# Можно скачать, распаковать и собрать образ (bzip2, gzip, xz) 
-docker build -f ctx/Dockerfile http://server/ctx.tar.gz 
-# Сборка без контекста 
+# Сборка образа в текущей папке
+docker build .
+# Указание файла
+docker build -f containers/dockerfile-mode-1 .
+# Можно скачать, распаковать и собрать образ (bzip2, gzip, xz)
+docker build -f ctx/Dockerfile http://server/ctx.tar.gz
+# Сборка без контекста
 docker build - < Dockerfile
 ```
 

@@ -1,6 +1,4 @@
----
-title: Install SNMP Trapper
----
+# Install SNMP Trapper
 
 ```bash
 yum install net-snmp net-snmp-utils

@@ -1,6 +1,4 @@
----
-title: Certificates
----
+# Certificates
 
 - [cert-manager](https://cert-manager.io/)
 - [https://www.jetstack.io/](https://www.jetstack.io/)

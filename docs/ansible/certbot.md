@@ -1,6 +1,4 @@
----
-title: Install Certbot
----
+# Install Certbot
 
 - `host_vars/node01.txt`
 

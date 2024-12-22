@@ -1,6 +1,4 @@
----
-title: Install Certbot
----
+# Install Certbot
 
 ```bash
 sudo apt update

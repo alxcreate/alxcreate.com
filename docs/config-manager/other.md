@@ -1,6 +1,4 @@
----
-title: Other
----
+# Other
 
 ## Links
 
@@ -8,23 +6,15 @@ title: Other
 
 [Сбор состава групп администраторов](https://www.itninja.com/blog/view/audit-local-administrator-group-with-sccm)
 
-## Редактирование пользовательской консоли
+## Edit Console
 
-Редактирование выполняется с помощью утилиты AdminUI.ConsoleBuilder.exe `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\AdminUI.ConsoleBuilder.exe` Редактируются файлы в директории `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\XmlStorage\ConsoleRoot`
+Create backup of the folder `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\XmlStorage\ConsoleRoot`.
+
+Edit with `AdminUI.ConsoleBuilder.exe` `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\AdminUI.ConsoleBuilder.exe`. Files in `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\XmlStorage\ConsoleRoot` will be updated.
 
 - ConnectedConsole.xml
 - IdleConsole.xml
 - ManagementClassDescriptions.xml
-
-Лучше сделать бэкап директории `C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\XmlStorage\ConsoleRoot` перед изменением
-
-## Получение информации о клиенте
-
-```sql
-select * from SMS_R_System where SMS_R_System.SecurityGroupName = "domain\\group"
-
-select * from SMS_R_System where SMS_R_System.SystemOUName like "domain/ou/ou"
-```
 
 ## USMT
 
@@ -36,7 +26,7 @@ select * from SMS_R_System where SMS_R_System.SystemOUName like "domain/ou/ou"
 
 [What does USMT migrate?](https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-what-does-usmt-migrate)
 
-`C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\User State Migration Tool\amd64` `USMT Mig_.xml`
+`C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\User State Migration Tool\amd64\USMT Mig_.xml`
 
 ## HP Manageability Integration Kit (MIK)
 
@@ -77,42 +67,9 @@ SELECT * FROM vLogs WHERE ProcedureName = 'spDiagChangeTracking'
 
 [sccm-1602-hotfix-stuck-on-prerequisite-check-passed](https://emeneye.wordpress.com/2016/08/01/sccm-1602-hotfix-stuck-on-prerequisite-check-passed/)
 
-Get `PackageGuid` from `C:\Program Files\Microsoft Configuration Manager\EasySetupPayload`
+Get `PackageGuid` from `C:\Program Files\Microsoft Configuration Manager\EasySetupPayload` and delete from `CM_UpdatePackages`.
 
 ```sql
 DELETE FROM CM_S01.dbo.CM_UpdatePackages
 WHERE PackageGuid='6b4f84b7-5555-48b0-aecc-74fb5a8aa24b';
-```
-
-## Change start user for Task Scheduler
-
-```powershell title="powershell"
-$principal = "domain\name$"
-$tasks = @(
-    # List of tasks to change
-    "NameOfTask1",
-    "Folder\NameOfTask2",
-)
-
-$principal = New-ScheduledTaskPrincipal -UserID $principal -LogonType Password
-
-foreach ($task in $tasks) {
-    Set-ScheduledTask -TaskName "$task" -Principal $principal
-}
-```
-
-## Run without browser
-
-```powershell title="powershell"
-Invoke-WebRequest -Headers @{"Cache-Control"="no-cache"} `
-        -Uri $url `
-        -MaximumRedirection 0 `
-        -UseBasicParsing `
-        -ErrorAction SilentlyContinue).RawContent
-```
-
-## Start script without profile
-
-```powershell
--noprofile
 ```

@@ -1,7 +1,4 @@
----
-title: Yandex Cloud Template Container Optimised Image
----
-
+# Yandex Cloud Template Container Optimised Image
 
 This is a template for creating an instance based on a container-optimized image in Yandex Cloud.
 

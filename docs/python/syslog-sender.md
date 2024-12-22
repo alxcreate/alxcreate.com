@@ -1,6 +1,4 @@
----
-title: SysLog Sender
----
+# SysLog Sender
 
 Script to send a message to a SysLog server.
 

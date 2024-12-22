@@ -1,6 +1,4 @@
----
-title: OSD
----
+# Operating System Deployment
 
 ## Links
 
@@ -10,23 +8,23 @@ title: OSD
 
 ## ESD to WIM
 
-- Монтировать ISO образ. Получить список версий внутри образа
+Mount the ISO image. Get a list of versions inside the image
 
 ```bat
 dism /Get-WimInfo /WimFile:h:\sources\install.esd
 ```
 
-Экспортировать нужную версию указав соответствующий **SourceIndex**
+Export the image to a `.wim` file
 
 ```bat
 dism /export-image /SourceImageFile:e:\sources\install.esd /SourceIndex:1 /DestinationImageFile:C:\Temp\Windows10_21H2_OEM_EN_x64.wim /Compress:max /CheckIntegrity
 ```
 
-- Если файл в формате `.wim`, то можно использовать один файл для использования установки разных версий;
-- Полученные файлы `.wim` копировать в каталог на сервере SCCM `%DeployRoot%\OS\Image`;
-- В консоли **CM** добавить образ в **Operating System Images**;
-- Выполнить распространение каждого добавленного образа на точку распространения **CM**;
-- Добавляется в UDI.
+- If the file is in `.wim` format, then you can use one file for installing different versions;
+- Copy the resulting `.wim` files to the SCCM server directory `%DeployRoot%\OS\Image`;
+- In the **CM** console, add the image to **Operating System Images**;
+- Distribute each added image to the **CM** distribution point;
+- Added to UDI.
 
 ## Language
 
@@ -40,3 +38,20 @@ You need to change the following lines in the **oobeSystem** section of the **un
 <UILanguage>%UILanguage%</UILanguage>
 <UserLocale>%Inputlocale%</UserLocale>
 ```
+
+## Settings
+
+### TFTP Settings for PXE Boot
+
+Edit registry on server with PXE Distribution Point.
+
+- Path: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SMS\DP`
+- Type: `REG_DWORD`
+- RamDiskTFTPBlockSize - package size; Default `4096` (`16384` max)
+- RamDiskTFTPWindowSize - package count; Default `4`
+
+Optimal size for MTU. Example, 1450.
+
+### Set Computer Name
+
+Open the properties of the **All Unknown Computers** collection and add variables on the **Collection Variables** tab (e.g. `OSDComputerName`)

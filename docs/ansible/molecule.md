@@ -1,6 +1,4 @@
----
-title: Molecule
----
+# Molecule
 
 Molecule is designed to aid in the development and testing of Ansible roles. Molecule provides support for testing with multiple instances, operating systems and distributions, virtualization providers, test frameworks and testing scenarios. Molecule encourages an approach that results in consistently developed roles that are well-written, easily understood and maintained.
 
@@ -35,13 +33,13 @@ molecule init scenario default --driver-name docker
 Define in file `molecule/default/molecule.yml` platform for test:
 
 ```yml
-lint: | 
-ansible-lint . 
-yamllint . 
-platforms: 
-- name: centos7 
-image: docker.io/pycontribs/centos:7 
-pre_build_image: true 
+lint: |
+ansible-lint .
+yamllint .
+platforms:
+- name: centos7
+image: docker.io/pycontribs/centos:7
+pre_build_image: true
 ```
 
 ## Change testing order
@@ -49,11 +47,11 @@ pre_build_image: true
 `molecule.yml`
 
 ```yml title="molecule/default/molecule.yml"
-scenario: 
-test_sequence: 
-- destroy 
-- create 
-- ... 
+scenario:
+test_sequence:
+- destroy
+- create
+- ...
 ```
 
 ## Check matrix steps

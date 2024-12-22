@@ -1,6 +1,4 @@
----
-title: AWS EKS Template
----
+# AWS EKS Template
 
 ```hcl title="aws_provider.tf"
 terraform {
@@ -102,7 +100,7 @@ resource "aws_eks_node_group" "projectname_eks_node_group_app" {
     max_size     = 2
     min_size     = 1
   }
-  
+
   update_config {
     max_unavailable = 1
   }

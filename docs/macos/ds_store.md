@@ -1,6 +1,4 @@
----
-title: .DS_Store files
----
+# .DS_Store files
 
 Disable creation of .DS_Store files on network volumes:
 

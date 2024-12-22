@@ -1,11 +1,8 @@
----
-title: Install PXE
----
-
+# Install PXE
 
 ## Install Windows ADK and Windows PE
 
-![alt text](install-pxe/install_pxe_01.png)
+![alt text](img/install_pxe_01.png)
 
 Для работы с образами Windows необходимо на сервер SCCM установить Windows Windows Assessment and Deployment Kit и Windows Preinstallation Environment. Они опубликованы на официальном сайте Microsoft.
 
@@ -16,7 +13,7 @@ title: Install PXE
 - Deployment Tools
 - Windows Preinstallation Environment (Windows PE)
 
-![alt text](install-pxe/install_pxe_02.png)
+![alt text](img/install_pxe_02.png)
 
 ## Install and integration Microsoft Deployment Toolkit (MDT)
 
@@ -24,13 +21,13 @@ title: Install PXE
 
 Запустите приложение **Configure ConfigMgr Integration** и выполните интеграцию. Будут добавлены мастера и шаблоны.
 
-![alt text](install-pxe/install_pxe_03.png)
+![alt text](img/install_pxe_03.png)
 
 ## Enable PXE
 
 Для включения **Preboot Execution Environment** перейдите в свойства **Distribution point**.
 
-![alt text](install-pxe/install_pxe_04.png)
+![alt text](img/install_pxe_04.png)
 
 - **Enable PXE support for clients** - для включения функции загрузки по сети. Windows Deployment Services будет установлен если не выбрана опция Enable a PXE responder without Windows Deployment Service и если он ещё не установлен.
 - **Allow this distribution point to respond to incoming PXE requests** – разрешить этой точке дистрибуции отвечать на запросы PXE.
@@ -38,13 +35,13 @@ title: Install PXE
 - **Enable a PXE responder without Windows Deployment Service** – включение службы «ConfigMgr PXE Responder Service» для работы без роли WDS. Не будет доступен мультикаст. Не будет папки RemoteInstall.
 - **Require a password when computers use PXE** – включение ввода пароля если нужно ограничить доступ пользователям к этой функции. Запрос будет выполняться после загрузки Boot image, но до выбора Task sequence.
 
-![alt text](install-pxe/install_pxe_05.png)
+![alt text](img/install_pxe_05.png)
 
 Будет включена роль **WDS** и сервер будет готов принимать запросы от клиентов. О завершении процесса можно узнать из файла `C:\Program Files\Microsoft Configuration Manager\Logs\distmgr.log`
 
 В директориях `C:\RemoteInstall\SMSBoot\x64` и `C:\RemoteInstall\SMSBoot\x86` будет создано по семь файлов. Они используются **WDS**, не **ConfigMgr PXE Responder**.
 
-![alt text](install-pxe/install_pxe_06.png)
+![alt text](img/install_pxe_06.png)
 
 <table>
     <tr>
@@ -104,7 +101,7 @@ title: Install PXE
 
 Для работы PXE необходим работающий DHCP сервер. Назначим на нём три области для выдачи адресов в разных подсетях `10.0.1.101-200`, `10.0.2.101-200` и `10.0.3.101-200`. Укажем адрес шлюза и сервер имен в каждой области.
 
-![alt text](install-pxe/install_pxe_07.png)
+![alt text](img/install_pxe_07.png)
 
 ## Network settings
 
@@ -123,7 +120,7 @@ title: Install PXE
 
 Например, так это делается на MikroTik. Адрес PXE сервера `10.0.1.2` указывается и для DHCP.
 
-![alt text](install-pxe/install_pxe_08.png)
+![alt text](img/install_pxe_08.png)
 
 Для Cisco используется:
 
