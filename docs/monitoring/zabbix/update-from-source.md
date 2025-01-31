@@ -1,32 +1,39 @@
 # Update Zabbix from Source
 
-1. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix7.2.3`
+1. Set new version
 
     ```bash
-    wget https://cdn.zabbix.com/zabbix/sources/stable/7.2/zabbix-7.2.3.tar.gz -P /home/zabbix7.2.3
+    NEW_VERSION="7.2.3"
+    MAJOR_VERSION=${NEW_VERSION%.*}
     ```
 
-2. Extract source
+2. Download source from [https://www.zabbix.com/download_sources](https://www.zabbix.com/download_sources) to folder `/home/zabbix${NEW_VERSION}`
 
     ```bash
-    cd /home/zabbix7.2.3
-    tar -zxvf zabbix-7.2.3.tar.gz
+    wget https://cdn.zabbix.com/zabbix/sources/stable/${MAJOR_VERSION}/zabbix-${NEW_VERSION}.tar.gz -P /home/zabbix${NEW_VERSION}
     ```
 
-3. Execute `configure` with necessary options
+3. Extract source
 
     ```bash
-    cd /home/zabbix7.2.3/zabbix-7.2.3
+    cd /home/zabbix${NEW_VERSION}
+    tar -zxvf zabbix-${NEW_VERSION}.tar.gz
+    ```
+
+4. Execute `configure` with necessary options
+
+    ```bash
+    cd /home/zabbix${NEW_VERSION}/zabbix-${NEW_VERSION}
     ./configure --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi
     ```
 
-4. If necessary, install the necessary components
+5. If necessary, install the necessary components
 
     ```bash
     apt-get install libopenipmi-dev / sudo yum install OpenIPMI-devel
     ```
 
-5. After successful configuration, compile and install
+6. After successful configuration, compile and install
 
     ```bash
     make install
@@ -36,21 +43,21 @@
 
     The configuration files will be installed in `/usr/local/etc/zabbix_server.conf`.
 
-6. Copy frontend files from source folder
+7. Copy frontend files from source folder
 
     ```bash
     cp -rf /var/www/html/zabbix /var/www/html/_zabbix
-    cp -rf /home/zabbix7.2.3/zabbix-7.2.3/ui/* /var/www/html/zabbix/
+    cp -rf /home/zabbix${NEW_VERSION}/zabbix-${NEW_VERSION}/ui/* /var/www/html/zabbix/
     rm -rf /var/www/html/_zabbix
     ```
 
-7. If required, edit php.ini file
+8. If required, edit php.ini file
 
     ```bash
     nano /etc/php/8.3/apache2/php.ini
     ```
 
-8. Restart services
+9. Restart services
 
     ```bash
     systemctl restart zabbix-server zabbix-agent apache2
