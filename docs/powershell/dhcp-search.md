@@ -48,7 +48,6 @@ function Search-DHCPInfo {
     }
 
     $dhcpServers = Get-DhcpServerInDC
-
     $results = @()
 
     foreach ($server in $dhcpServers) {
@@ -77,6 +76,17 @@ function Search-DHCPInfo {
 
                 if ($matches) {
                     foreach ($match in $matches) {
+                        $description = ""
+                        try {
+                            $reservation = Get-DhcpServerv4Reservation -ComputerName $server.DnsName -ScopeId $scope.ScopeId -ClientId $match.ClientId -ErrorAction SilentlyContinue
+                            if ($reservation) {
+                                $description = $reservation.Description
+                            }
+                        }
+                        catch {
+                            Write-Verbose "Could not get reservation description: $_"
+                        }
+
                         $results += [PSCustomObject]@{
                             DHCPServer = $server.DnsName
                             ScopeID = $scope.ScopeId
@@ -86,6 +96,7 @@ function Search-DHCPInfo {
                             MACAddress = $match.ClientId
                             LeaseExpiryTime = $match.LeaseExpiryTime
                             AddressState = $match.AddressState
+                            Description = $description
                         }
                     }
                 }
@@ -120,6 +131,7 @@ function Format-DHCPResults {
             Write-Host "MACAddress     : $($result.MACAddress)"
             Write-Host "LeaseExpiryTime: $($result.LeaseExpiryTime)"
             Write-Host "AddressState   : $($result.AddressState)"
+            Write-Host "Description    : $($result.Description)"
             Write-Host ($("-" * 50))
         }
     }
