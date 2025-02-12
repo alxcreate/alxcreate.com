@@ -2,6 +2,8 @@
 
 [Ollama](https://ollama.com) is tool for running large language models locally. [Download and install](https://ollama.com/download) app for your operating system. Also you can [download from GitHub](https://github.com/ollama/ollama/releases).
 
+## Download models
+
 After install in **Models** menu you can find commands for download models on you computer:
 
 ![alt text](img/img01.png)
@@ -16,9 +18,11 @@ You can pull and run models from list:
 
 ![alt text](img/img03.png)
 
-I already have some:
+Show all models on your computer:
 
 ![alt text](img/img04.png)
+
+## Example of usage
 
 Start and try write prompt for example:
 
