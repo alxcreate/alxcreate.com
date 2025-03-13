@@ -12,6 +12,21 @@ At the beginning of the Windows 11 installation, press **Shift+F10** and enter `
 
 At the beginning of the Windows 11 installation, press **Shift+F10** and enter `OOBE\BYPASSNRO` in **cmd**. It will reboot and you can continue the installation without the Internet.
 
+## Get schedule task info
+
+```powershell
+Get-ScheduledTaskInfo
+$TaskXML = [XML]((Get-ScheduledTask)[1] |Export-ScheduledTask)
+$TaskXML.Task.RegistrationInfo
+```
+
+## Import scheduler task
+
+```powershell
+$xml = Get-Content -Path ".\task.xml" -Raw -Encoding Unicode
+Register-ScheduledTask -TaskName "task" -Xml $xml
+```
+
 ## Get installed .msi
 
 ```powershell
