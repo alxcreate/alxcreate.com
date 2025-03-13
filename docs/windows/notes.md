@@ -12,6 +12,13 @@ At the beginning of the Windows 11 installation, press **Shift+F10** and enter `
 
 At the beginning of the Windows 11 installation, press **Shift+F10** and enter `OOBE\BYPASSNRO` in **cmd**. It will reboot and you can continue the installation without the Internet.
 
+## Get installed .msi
+
+```powershell
+Get-WmiObject Win32_Product
+Get-WmiObject Win32_Product | Where-Object {$_.IdentifyingNumber -eq "{GUID}"} | Select-Object Name, Version
+```
+
 ## Run as user
 
 ```bat title="bat"
