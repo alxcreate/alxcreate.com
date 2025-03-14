@@ -34,6 +34,18 @@ Get-WmiObject Win32_Product
 Get-WmiObject Win32_Product | Where-Object {$_.IdentifyingNumber -eq "{GUID}"} | Select-Object Name, Version
 ```
 
+## Install Git
+
+```powershell
+Invoke-WebRequest -Uri https://github.com/git-for-windows/git/releases/latest/download/Git-2.48.1-64-bit.exe -OutFile GitInstaller.exe
+Start-Process -FilePath .\GitInstaller.exe -ArgumentList '/VERYSILENT', '/NORESTART'
+
+$gitPath = (Get-Command git).Source.Replace("git.exe", "")
+$env:Path += ";$gitPath"
+
+# Restart session
+```
+
 ## Run as user
 
 ```bat title="bat"
