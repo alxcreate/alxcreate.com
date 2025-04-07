@@ -1,6 +1,6 @@
 # Dockerfile
 
-[Как устроен Dockerfile](https://doka.guide/tools/dockerfile/))
+[Как устроен Dockerfile](https://doka.guide/tools/dockerfile/)
 
 ```docker title="Dockerfile"
 # Всегда импорт базового образа
