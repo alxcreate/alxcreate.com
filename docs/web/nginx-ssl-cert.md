@@ -1,4 +1,4 @@
-# Nginx SSL сертификат
+# Nginx SSL certificate
 
 Create private key:
 
