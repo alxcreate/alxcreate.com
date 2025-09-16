@@ -1,0 +1,98 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Ansible": {
+    "message": "Ansible",
+    "description": "The label for category Ansible in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.ConfigManager": {
+    "message": "ConfigManager",
+    "description": "The label for category ConfigManager in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Applications": {
+    "message": "Applications",
+    "description": "The label for category Applications in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Collections": {
+    "message": "Collections",
+    "description": "The label for category Collections in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.PXE": {
+    "message": "PXE",
+    "description": "The label for category PXE in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Docker": {
+    "message": "Docker",
+    "description": "The label for category Docker in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.GitLab": {
+    "message": "GitLab",
+    "description": "The label for category GitLab in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Kubernetes": {
+    "message": "Kubernetes",
+    "description": "The label for category Kubernetes in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Linux": {
+    "message": "Linux",
+    "description": "The label for category Linux in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.LLM": {
+    "message": "LLM",
+    "description": "The label for category LLM in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.MacOS": {
+    "message": "MacOS",
+    "description": "The label for category MacOS in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Monitoring": {
+    "message": "Monitoring",
+    "description": "The label for category Monitoring in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Grafana": {
+    "message": "Grafana",
+    "description": "The label for category Grafana in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Zabbix": {
+    "message": "Zabbix",
+    "description": "The label for category Zabbix in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Microsoft Teams": {
+    "message": "Microsoft Teams",
+    "description": "The label for category Microsoft Teams in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.PowerShell": {
+    "message": "PowerShell",
+    "description": "The label for category PowerShell in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Python": {
+    "message": "Python",
+    "description": "The label for category Python in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Terraform": {
+    "message": "Terraform",
+    "description": "The label for category Terraform in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.AWS": {
+    "message": "AWS",
+    "description": "The label for category AWS in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.YC": {
+    "message": "YC",
+    "description": "The label for category YC in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Vagrant": {
+    "message": "Vagrant",
+    "description": "The label for category Vagrant in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Web": {
+    "message": "Web",
+    "description": "The label for category Web in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Windows": {
+    "message": "Windows",
+    "description": "The label for category Windows in sidebar docsSidebar"
+  }
+}
