@@ -94,7 +94,9 @@ For testing from the Zabbix server, you need to specify the address of the host 
 
 ```bash
 zabbix_get -s <agent_IP_address> -k custom.icmpping[8.8.8.8]
-```## Windows Implementation
+```
+
+## Windows Implementation
 
 For Windows systems, the modern and most reliable approach is using PowerShell and its `Test-Connection` cmdlet. Unlike parsing the text output of the `ping.exe` utility, which can change depending on the operating system language and Windows version, `Test-Connection` returns a structured `Win32_PingStatus` object.
 
