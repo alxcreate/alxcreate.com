@@ -73,3 +73,12 @@ Get `PackageGuid` from `C:\Program Files\Microsoft Configuration Manager\EasySet
 DELETE FROM CM_S01.dbo.CM_UpdatePackages
 WHERE PackageGuid='6b4f84b7-5555-48b0-aecc-74fb5a8aa24b';
 ```
+
+### MDT Task Sequence Integration with crash
+
+`C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\XmlStorage\Extensions\Forms`
+
+- `Microsoft.BDD.SCCM_CreateBootImage.xml`
+- `Microsoft.BDD.SCCM_ImportTaskSequence.xml`
+
+Change `http` to `https`
