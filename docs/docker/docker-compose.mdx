@@ -1,0 +1,170 @@
+# Docker-Compose
+
+## Running a multi-container application
+
+```bash
+# Build images
+docker-compose build
+# Start services (containers)
+docker-compose up -d
+# Stop and remove containers created by up
+docker-compose down
+# Logs
+docker-compose logs -f [service name]
+# List containers
+docker-compose ps
+# Execute a command in a container
+docker-compose exec [service name] [command]
+# List images
+docker-compose images
+```
+
+The `docker-compose.yaml` file can have the following top-level elements:
+
+- `services` - list of all containers to be started;
+- `networks` - list of subnets that unite groups of containers into a virtual local network;
+- `volumes` - list of volumes that will be available to the containers described in the configuration file;
+- `configs` - list of parameters that allow containers to be run in different modes without rebuilding them;
+- `secrets` - list of security-sensitive parameters.
+
+## Example 1 (web server and DB)
+
+```yaml title="compose.yml"
+version: "3.9"
+services:
+  # MySQL image
+  db:
+    # Specify platform
+    platform: linux/amd64
+    # Image must be stored locally or in a registry
+    image: mysql:5.7
+    # Volume mount paths
+    volumes:
+      # Data volume specified at the end
+      - db_data:/var/lib/mysql
+    # Automatically restart on stop
+    restart: always
+    # Set environment variables
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD:
+
+  # WordPress image
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    # Port mapping
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD:
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+```
+
+Start with `docker-compose up`
+
+## Example 2
+
+- `docker-compose.yml`
+- `server/` - server files
+- `server/server.py` - server code
+- `server/index.html` - text to display
+- `server/Dockerfile` - instructions for creating the server environment
+- `client/` - application files
+- `client/client.py` - client code
+- `client/Dockerfile` - instructions for creating the client environment
+
+```yaml title="docker-compose.yml"
+# docker-compose file starts with the version tag
+version: "3"
+# docker-compose works with services
+# 1 service = 1 container
+services:
+ # Creating two services
+ # Name of the first service (container) is 'server'
+ server:
+   # Path to the Dockerfile for building the image
+   build: server/
+   # Run the command "python ./server.py"
+   command: python ./server.py
+   # Port mapping: [host port]:[container port]
+   ports:
+     - 1234:1234
+ # Name of the second service (container) is 'client'
+ client:
+   # Path to the Dockerfile for building the image
+   build: client/
+   # Run the command "python ./client.py"
+   command: python ./client.py
+   # 'network_mode' to describe the network type
+   # Specifies that the container can access the host's 'localhost'
+   network_mode: host
+   # 'depends_on' waits for other services before starting
+   # Ensures the 'client' service waits for the 'server' service to be ready
+   depends_on:
+     - server
+```
+
+```python title="server/server.py"
+#!/usr/bin/env python3
+# Import standard Python libraries
+# Installed with Python
+import http.server
+import socketserver
+# Variable for handling client requests to the server
+handler = http.server.SimpleHTTPRequestHandler
+# The server starts on port 1234
+# This information is useful when working with docker-compose
+with socketserver.TCPServer(("", 1234), handler) as httpd:
+# The server will run continuously, waiting for client requests
+httpd.serve_forever()
+```
+
+```html title="server/index.html"
+<h1>Some text</h1>
+```
+
+```docker title="server/Dockerfile"
+# Import the base image
+FROM python:latest
+# Set the working directory for commands
+WORKDIR /server/
+# Import 'server.py' and 'index.html'
+ADD server.py .
+ADD index.html .
+```
+
+```python title="client/client.py"
+#!/usr/bin/env python3
+# Import standard Python libraries
+# Used to download 'index.html' from the server
+# Installed with Python
+import urllib.request
+# Request variable for 'http://localhost:1234/'
+fp = urllib.request.urlopen("http://localhost:1234/")
+# 'encodedContent' is the encoded server response ('index.html')
+# 'decodedContent' is the decoded server response (what we want to print)
+encodedContent = fp.read()
+decodedContent = encodedContent.decode("utf8")
+# Print the contents of the file from the server ('index.html')
+print(decodedContent)
+# Close the connection to the server
+fp.close()
+```
+
+```docker title="client/Dockerfile"
+FROM python:latest
+# Set the working directory '/client/'
+WORKDIR /client/
+# Import 'client.py' into '/client/'
+ADD client.py .
+```

@@ -1,0 +1,86 @@
+# Dockerfile
+
+```Dockerfile title="Dockerfile"
+# Always specify the base image. It can be an official image from Docker Hub or a custom image from a private registry.
+FROM ubuntu:22.04
+# Run any terminal commands during the build
+RUN sudo apt update && sudo apt install nodejs && sudo apt install npm
+# Set the working directory to define an explicit location for command execution inside the Dockerfile
+WORKDIR /app
+# Copy the entire contents of the folder where the Dockerfile is located into /app in the image
+COPY . /app
+# ADD can download a file or extract an archive
+# Set environment variables
+ENV NODE_ENV=production
+# ARG can be specified at build time (docker build --build-arg user=node_user). Stays in history, not for secrets (docker history)
+# For securely passing sensitive data, use Docker volumes instead
+# Default value is 'deploy' (can be omitted)
+ARG user=deploy
+# Run as the system or another user (specified in ARG)
+USER $user
+# Expose a port from the container
+EXPOSE 8080
+# At the end, start the application with ENTRYPOINT/CMD
+ENTRYPOINT ["node", "/app/app.js"]
+# CMD ["node", "/app/app.js"]
+# CMD can be overridden when starting a container
+```
+
+## Multi-stage build
+
+```Dockerfile title="Dockerfile"
+# Build the project on the Node.js platform
+FROM node:lts-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+# Run the application on the server
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+## Excluding files from the build with .dockerignore
+
+```
+# Files or folders whose names start with temp and are located in any first-level folder
+*/temp*
+# For second-level folders
+*/*/temp*
+# Files and folders from the root of the image whose names start with temp, are five characters long, and the last character can be anything
+temp?
+```
+
+```bash
+# Build an image in the current folder
+docker build .
+# Specify a file
+docker build -f containers/dockerfile-mode-1 .
+# Can download, extract, and build an image (bzip2, gzip, xz)
+docker build -f ctx/Dockerfile http://server/ctx.tar.gz
+# Build without context
+docker build - < Dockerfile
+```
+
+```bash
+# First, after your login you have to tag your image before pushing:
+docker tag image_name YOUR_DOCKERHUB_NAME/image_name
+# then, you have to push it.
+docker push YOUR_DOCKERHUB_NAME/image_name
+```
+
+## Best practices
+
+1. Build images so that the container lifecycle can be managed easily. The image should not store internal state. Data can be passed into the image at build time using command-line arguments, and Docker volumes can be used at runtime.
+2. Understand the context in which the web application runs: the project folder, a remote source, or a repository.
+3. Keep in mind that a Dockerfile can be run outside of context via standard input.
+4. Use a `.dockerignore` file to ensure only the necessary files and folders are included in the image. Strip out everything unnecessary at the build stage.
+5. Use multi-stage builds. This can significantly reduce the image size.
+6. Do not install what you will not use in the image.
+7. Separate applications into independent, self-contained components. This process is called decoupling.
+8. Minimize the number of layers in the image. This improves performance both during build and at runtime.
+9. If instruction parameters span multiple lines (using a line continuation character), arrange the arguments in alphabetical order. This improves readability and simplifies debugging.
+10. Use the Docker cache only for layers that will be needed to build other images. To skip the cache, add the `--no-cache=true` flag to the `docker build` command.

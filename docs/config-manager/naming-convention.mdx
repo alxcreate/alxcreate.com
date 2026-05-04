@@ -1,0 +1,167 @@
+# Naming Convention
+
+## File and Folder Naming
+
+### Deployment Share
+
+```text
+​​​​​​​📁 Deploy_<SiteCode> (\\<sevrername>\Deploy_<sitecode>)
+    📁 Application
+        📁 <Manufacturer>
+            📁 <Manufacturer>_<Product>_<Version>
+                📁 <PV>_<Language>_<Architecture>
+                📁 <ConfigurationName>_<PV>_<Language>_<Architecture>
+    📁 Driver
+        📁 Package
+            📁 <HardwareManufacturer>_<HardwareModel>_<WinVersion>_<Architecture>_<PackageVersion> (WinVersion=Win7/Win10)
+        📁 Source
+            📁 <Category> (LAN/WWAN/WLAN/CHIPSET/DISPLAY/CAMERA/SOL/GRAPHIC/RAID/AUDIO/MEI/FIRMWARE/OTHERS)
+                📁 <HardwareManufacturer>_<HardwareModel>_<WinVersion>_<Architecture>_<Version>​​​​​​​
+    📁 OS
+        📁 WinPE
+            💿 Custom_<Version>_<Architecture>.wim
+        📁 Image
+            💿 <OS><Edition>_<Version>_<Configuration>_<Language>_<Architecture>.wim
+            💿 Source_<OS><Edition>_<Version>_<Configuration>_<Language>_<Architecture>.wim
+    📁 SoftwarePackage
+        📁 <Category> (BIOS, Configuration, Tools, Scripts)
+            📁 <Manufacturer>_<Name>_<Version>_<Language>_<Architecture>_<PackageVersion>
+    📁 SoftwareUpdate
+        📁 Package
+            📁 <Year>-<S1S2>
+            📁 EndpointProtection
+        📁 Source
+            📁 <Manufacturer>
+                📁 <Manufacturer>_<Product>_<Version>_<Language>_<Architecture>_<PackageVersion>
+```
+
+## Object Naming
+
+### Applications
+
+```text
+💾 Applications
+    📁 <Manufacturer>
+        💾 Name - <Manufacturer> <Product> <Version>
+        Manufacturer - <Manufacturer>
+        Software Version - <Version>
+        Localized Display Name - <Product>
+            💾 Deployment Type Name - <Manufacturer> <Product> <Version> - <Configuration> <PV> <Language> <Architecture>
+```
+
+### Packages
+
+```text
+💽 Packages
+    📁 <Category> (Like in Deployment Share: Firmware, Drivers, Scripts)
+        💽 Name - <Product>
+        Version - <Version>
+        Manufacturer - <Manufacturer>
+        Language - <Language> <Architecture>
+```
+
+### WIM Files
+
+```text
+💽 Operating System Images
+    📁 <OS><Edition>
+        💽 Name - <OS><Edition> <Version> <Configuration> <Language> <Architecture>
+            <Version>
+```
+
+### Task Sequences
+
+```text
+💽 Task Sequences
+    📁 OSD (OS deployments)
+        💽 <Manufacturer> <OS><Edition> <Configuration> <Language> <Architecture>
+    📁 OSI (.wim creating)
+        💽 OSI <Manufacturer> <OS><Edition> <Configuration> <Language> <Architecture>
+    📁 OSU (Windows updates (feature upgrade))
+        💽 <Manufacturer> <OS><Edition> <Configuration> <Language> <Architecture>
+    📁 Dev (Test)
+        💽 DEV <Manufacturer> <OS><Edition> <Configuration> <Language> <Architecture>
+```
+
+Remove spaces and underscores in Manufacturer and Product values. These characters are used as delimiters.
+
+- **Manufacturer** - Manufacturer. Do not use different spellings of the same manufacturer. If not specified or Opensource, "Others" is used.
+- **Product** - Product name (Office, Photoshop, etc.). The marketing version number "2019" or "X" is written together.
+- **Version** - Product version number in the format 0.0.0.0, 0.0.0 or 0.0. Do not use the marketing version number "2019" or "X" etc.
+- **P** or **V** - Physical and virtual packages (APP-V) The type is specified in the deployment types.
+- **Language** - Two-character language: RU, EN, DE, FR, etc.
+- **Architecture** - Architecture (arm64/x64/x86/x99).
+- **Configuration** - Configuration description is used when necessary.
+- **OS** - OS (Windows7, Windows11, etc.).
+- **Edition** - OS edition (Home, Pro, Ent, Edu, Mlt)
+
+### Collection Naming
+
+```text
+🧑🏼‍💻 User Collections
+    📁 Development (Test)
+        🧑🏼‍💻 <Prefix> <Name>
+    📁 Software
+        📁 Required Software
+            📁 <Manufacturer>
+                🧑🏼‍💻 USWR <Manufacturer> <SoftwareName>
+                🧑🏼‍💻 USWR <Manufacturer> <SoftwareName> <LIFECYCLESTATE>
+                🧑🏼‍💻 USWR <Manufacturer> <SoftwareName> Uninstall
+        📁 Available Software
+            📁 <Manufacturer>
+                🧑🏼‍💻 USWA <Manufacturer> <SoftwareName>
+                🧑🏼‍💻 USWA <Manufacturer> <SoftwareName> <LIFECYCLESTATE>
+        📁 Required Profile
+            🧑🏼‍💻 USPR <ProfileName>
+        📁 Available Software
+            🧑🏼‍💻 USPA <ProfileName>
+   📁 Settings Management (Compliance rules)
+        🧑🏼‍💻 USM <Name>
+```
+
+- Prefix - Functionality prefix
+- LIFECYCLESTATE - Pilot, TST, INT etc.
+- ProfileName - HR, Marketing etc.
+
+```text
+🖥 Device Collections
+    📁 Development (Test)
+        🖥 <Prefix> <Name>
+    📁 Windows Defender
+        🖥 WD <PolicyName>
+    📁 Software
+        📁 Required Software
+            📁 <Manufacturer>
+                🖥 DSWR <Manufacturer> <SoftwareName>
+                🖥 DSWR <Manufacturer> <SoftwareName> <LIFECYCLESTATE>
+                🖥 DSWR <Manufacturer> <SoftwareName> Uninstall
+        📁 Available Software
+            📁 <Manufacturer>
+                🖥 DSWA <Manufacturer> <SoftwareName>
+                🖥 DSWA <Manufacturer> <SoftwareName> <LIFECYCLESTATE>
+        📁 Required Profile
+            🖥 DSPR <ProfileName>
+        📁 Available Profile
+            🖥 DSPA <ProfileName>
+    📁 Settings Management (Comliance rules)
+        🖥 SM <Name>
+    📁 Client Settings (Agent settings)
+        🖥 CS <Name>
+    📁 Power Management
+        🖥 PM <Name>
+    📁 Software Updates
+        🖥 SUM <Type> Pilot 1
+        🖥 SUM <Type> Prod
+        🖥 SUM Excluded (Excluded from all SUM)
+        🖥 SUM <Type> Manual (Manual installation)
+    📁 Maintenance Windows
+        🖥 MW <Name>
+    📁 Operating System Deployment
+        🖥 OSD <TSName> (Install OS)
+        🖥 OSU <TSName> (Update OS)
+    📁 Operating System Imaging
+        🖥 OSI <TSName> (Creating images .wim)
+```
+
+- Type - SRV (server) or CLN (client)
+- TSName - As in Task Sequence Name
