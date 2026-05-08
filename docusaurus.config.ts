@@ -3,7 +3,19 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'books',
+        path: 'books',
+        routeBasePath: 'books',
+        sidebarPath: './sidebars.ts',
+        breadcrumbs: false,
+      },
+    ],
+  ],
   title: 'alxcreate | Aleksey Abramov',
   tagline: 'Notes on Docusaurus',
   favicon: 'img/favicon.ico',
@@ -97,6 +109,13 @@ const config: Config = {
           sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'booksSidebar',
+          docsPluginId: 'books',
+          position: 'left',
+          label: 'Books',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
