@@ -128,7 +128,7 @@ export default function BooksPage() {
       <main className={styles.page}>
         <section className="container">
           <header className={styles.hero}>
-            <p className={styles.eyebrow}>Books</p>
+            <p className={styles.eyebrow}>Library</p>
             <h1>Books</h1>
             <p className={styles.lead}>
               A curated collection of technical books shown as tiles with a cover,
