@@ -55,7 +55,7 @@ const books = [
   },
   {
     title: 'Cloud Native DevOps with Kubernetes',
-    authors: 'John Arundel, Justin Domingus',
+    authors: 'John Arundel, Justin Domingos',
     year: '2019',
     genre: 'DevOps / Kubernetes',
     summary:
@@ -74,17 +74,17 @@ const books = [
     coverTone: 'coverGreen',
   },
   {
-    title: 'Site Reliability Engineering',
-    authors: 'D. Davis',
-    year: '2020',
+    title: 'Site Reliability Engineering: How Google Runs Production Systems',
+    authors: 'Betsy Beyer, Chris Jones, Jennifer Petoff, Niall Richard Murphy',
+    year: '2016',
     genre: 'Reliability / Operations',
     summary:
-      'An overview of reliability-focused engineering practices for operating production systems at scale, with emphasis on resilience, observability, and response.',
-    highlights: ['Reliability', 'Observability', 'Incident Response'],
+      'A foundational SRE book on how Google runs production systems, covering service ownership, toil reduction, incident response, and reliability engineering principles.',
+    highlights: ['SRE', 'Toil Reduction', 'Incident Response'],
     coverTone: 'coverPurple',
   },
   {
-    title: 'Securing DevOps',
+    title: 'Securing DevOps: Security in the Cloud',
     authors: 'Julien Vehent',
     year: '2018',
     genre: 'Security / DevOps',
@@ -92,26 +92,6 @@ const books = [
       'A security-focused guide to embedding protection into infrastructure, delivery pipelines, cloud platforms, and team processes without slowing delivery down.',
     highlights: ['Threat Modeling', 'Cloud Security', 'Automation'],
     coverTone: 'coverBlue',
-  },
-  {
-    title: 'DevOps: Effective Systems Operations',
-    authors: 'Julien Vehent',
-    year: '2018',
-    genre: 'DevOps / Systems Operations',
-    summary:
-      'A practitioner-oriented look at how DevOps improves system operations by combining collaboration, automation, and feedback loops in daily infrastructure work.',
-    highlights: ['Operations', 'Automation', 'Collaboration'],
-    coverTone: 'coverOrange',
-  },
-  {
-    title: 'Site Reliability Engineering: Reliability and Availability the Google Way',
-    authors: 'Niall Richard Murphy, Jennifer Petoff',
-    year: '2017',
-    genre: 'SRE / Production Engineering',
-    summary:
-      'A collection of lessons and operational practices inspired by Google SRE, centered on availability, service health, error budgets, and sustainable scaling.',
-    highlights: ['Error Budgets', 'Availability', 'Scaling'],
-    coverTone: 'coverGreen',
   },
 ];
 
