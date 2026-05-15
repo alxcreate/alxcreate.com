@@ -1,0 +1,139 @@
+.page {
+  padding: 3rem 0 4rem;
+}
+
+.hero {
+  margin: 0 auto 2.5rem;
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+}
+
+.lead {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1.125rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  display: grid;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 24px;
+  background: var(--ifm-card-background-color);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.cover {
+  display: flex;
+  min-height: 240px;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  color: #fff;
+}
+
+.cover h2 {
+  margin: 0;
+  color: inherit;
+  font-size: 1.5rem;
+}
+
+.cover p {
+  margin: 0.75rem 0 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.coverLabel {
+  margin-bottom: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.coverBlue {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #1d4ed8, #0f172a);
+}
+
+.coverOrange {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #f97316, #7c2d12);
+}
+
+.coverGreen {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #059669, #052e16);
+}
+
+.coverPurple {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #7c3aed, #312e81);
+}
+
+.cardBody {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.meta span {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.summary {
+  margin: 0;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.highlights li {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 999px;
+}
+
+html[data-theme='dark'] .card {
+  box-shadow: none;
+}
