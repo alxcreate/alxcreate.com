@@ -83,6 +83,18 @@
     linear-gradient(135deg, #f97316, #7c2d12);
 }
 
+.coverGreen {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #059669, #052e16);
+}
+
+.coverPurple {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #7c3aed, #312e81);
+}
+
 .cardBody {
   display: grid;
   gap: 1rem;
